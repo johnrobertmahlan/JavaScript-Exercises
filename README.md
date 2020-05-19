@@ -281,7 +281,6 @@ const maxOfThree = function(x,y,z) {
 ```javascript
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 
-
 function isCharAVowel(char) {
   if(vowels.includes(char)) {
     return true;
