@@ -75,3 +75,37 @@ const numArgs = function(...arguments) {
   return arguments.length;
 };
 ```
+
+7. Define a function, as a function declaration, `reverseString` that takes a string, reverses the characters, and returns it. For example, `reversestring('rockstar');` would return the string "ratskcor".
+
+```javascript
+function reverseString(str) {
+    console.log(str.split("").reverse().join([""]));
+}
+```
+
+8. Define a function, as a function expression, `longestStringInArray` that takes an array of strings as an argument and returns the length of the longest string.
+
+```javascript
+const longestStringInArray = function(arrayOfStrings) {
+  let longest = 0;
+  for(let i = 0; i<arrayOfStrings.length; i++) {
+    if(arrayOfStrings[i].length > longest) {
+      longest = arrayOfStrings[i].length;
+    };
+  } return longest;
+};
+```
+
+9. Define a function, as a function declaration, `stringsLongerThan` that takes an array of strings and a number as arguments; and returns an array of the strings that are longer than the number passed in. For example, `stringsLongerThan(['say', 'hello', 'in', 'the', 'morning'], 3)`; would return ['hello', 'morning'].
+
+```javascript
+function stringsLongerThan(array, num) {
+  newArray = [];
+  for(let i = 0; i<array.length; i++) {
+    if(array[i].length > num) {
+      newArray.push(array[i]);
+    };
+  } return newArray;
+};
+```
