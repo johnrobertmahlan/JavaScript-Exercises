@@ -209,7 +209,7 @@ const numArrays = [
 let numList = numArrays[numArrays.length - 1];
 ```
 
-14. Given the above numArrays array, access the number 66 and assign to a variable named num.
+14. Given the below numArrays array, access the number 66 and assign to a variable named num.
 
 ```javascript
 const numArrays = [
@@ -224,7 +224,7 @@ const numArrays = [
 let num = numArrays[2][1];
 ```
 
-15. Given the above numArrays array, use nested forEach methods to sum up all the numbers contained within numArrays and assign to a variable named total.
+15. Given the below numArrays array, use nested forEach methods to sum up all the numbers contained within numArrays and assign to a variable named total.
 
 ```javascript
 const numArrays = [
@@ -236,6 +236,8 @@ const numArrays = [
 ```
 
 ```javascript
+let total = 0;
+
 numArrays.forEach(function(numArray) {
   numArray.forEach(function(num) {
     total += num;
