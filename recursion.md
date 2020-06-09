@@ -13,3 +13,15 @@ function findMax(arr, idx) {
     return findMax(arr, idx + 1);
 };
 ```
+
+2. Define a function that returns the factorial of a given integer.
+
+```javascript
+let factorial = 1;
+
+function findFactorial(num) {
+    if(num === 1) return factorial;
+    factorial *= num;
+    return findFactorial(num - 1);
+};
+```
