@@ -14,7 +14,7 @@ function findMax(arr, idx) {
 };
 ```
 
-2. Define a function that returns the factorial of a given integer.
+2. Define a function that returns the factorial of any given integer.
 
 ```javascript
 function findFactorial(num) {
