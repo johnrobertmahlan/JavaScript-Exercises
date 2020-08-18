@@ -284,12 +284,24 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
+// function charCount(str) {
+//   let newStr = str.split("").sort().join("");
+//   let arr = newStr.match(/(.)\1*/g);
+//   let obj = {};
+//   arr.forEach(idx => obj[idx.split("").slice(0,1)] = idx.length);
+//   return obj;
+// }
+
 function charCount(str) {
-  let newStr = str.split("").sort().join("");
-  let arr = newStr.match(/(.)\1*/g);
-  let obj = {};
-  arr.forEach(idx => obj[idx.split("").slice(0,1)] = idx.length);
-  return obj;
+  let obj = {}
+  for(let i=0; i<str.length; i++) {
+    let char = str.charAt(i);
+    if(obj[char]) {
+      obj[char] += 1
+    } else {
+      obj[char] = 1
+    }
+  } return obj;
 }
 
 
@@ -318,6 +330,16 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
+function formatWithPadding(num1, char, num2) {
+  let numString = num1.toString();
+  if(numString.length >= num2) {
+    return numString;
+  } else {
+    while(numString.length < num2) {
+      numString = char + numString;
+    }
+  } return numString;
+}
 
 
 
@@ -342,6 +364,20 @@ isPalindrome('A nut for a jar of tuna'); //=> true
 isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
+
+function isPalindrome(str) {
+  // Should return a boolean depending on whether str is a palindrome
+  // casing and spaces don't count --> so 'racecar', 'RACEcar', and 'race CAR' are all palindromes
+  // If the length of the string is 0 or 1, return true (trivially, a string of length 1 will be a palindrome)
+  if(str.length <=1) return true;
+  let newStr = str.split("").reverse().join("").toLowerCase();
+  newStr = newStr.split(" ").join("");
+  if (str.split(" ").join("").toLowerCase() === newStr) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 
 
@@ -369,7 +405,17 @@ hammingDistance('abc', 'ab'); //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 12-hammingDistance here:
 
-
+function hammingDistance(str1, str2) {
+  if(str1.length !== str2.length) return NaN;
+  let count = 0;
+  // the function needs to compare the characters at each index and see if they're the same
+  // I can use charAt for this, and since the strings need to be of the same length, I only need one loop
+  for(let i=0; i<=str1.length; i++) {
+    if(str1.charAt(i) !== str2.charAt(i)) {
+      count += 1;
+    }
+  } return count;
+}
 
 
 
@@ -392,6 +438,21 @@ mumble('121'); //=> '1-22-111'
 mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
+
+function mumble(str) {
+  // I need to return a string
+  // That string should include each character from the original string repeated the number of times that matches its index + 1
+  // So if str has the letter 'a' at index 0, newStr should start with a single letter 'a'
+  // and if str has the letter 's' at index 4, newStr should have 5 letter 's' in the appropriate place
+  let newStr = '';
+  let index = 0;
+  for(let i=0; i<=str.length; i++) {
+    index = str.indexOf(str.charAt(i), i);
+    for(let j=0; j<=index; j++) {
+      newStr = newStr + str.charAt(i);
+    }
+  } return newStr.match(/(.)\1*/g).join("-");
+};
 
 
 
