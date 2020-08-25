@@ -284,24 +284,12 @@ charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i:
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
 
-// function charCount(str) {
-//   let newStr = str.split("").sort().join("");
-//   let arr = newStr.match(/(.)\1*/g);
-//   let obj = {};
-//   arr.forEach(idx => obj[idx.split("").slice(0,1)] = idx.length);
-//   return obj;
-// }
-
 function charCount(str) {
-  let obj = {}
-  for(let i=0; i<str.length; i++) {
-    let char = str.charAt(i);
-    if(obj[char]) {
-      obj[char] += 1
-    } else {
-      obj[char] = 1
-    }
-  } return obj;
+  let newStr = str.split("").sort().join("");
+  let arr = newStr.match(/(.)\1*/g);
+  let obj = {};
+  arr.forEach(idx => obj[idx.split("").slice(0,1)] = idx.length);
+  return obj;
 }
 
 
@@ -476,7 +464,13 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 -----------------------------------------------------------------*/
 // Your solution for 14-fromPairs here:
 
-
+function fromPairs(arr) {
+  let obj = {};
+  for(let i=0; i<arr.length; i++) { 
+    obj[arr[i][0]] = arr[i][1];
+  }
+  return obj;
+}
 
 
 
@@ -498,7 +492,14 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
 
-
+function mergeObjects(...objects) {
+  let first = objects[0]
+  for(let i=0; i<objects.length; i++) {
+    for (const key in objects[i]) {
+      first[key] = objects[i][key];
+    }
+  } return first;
+}
 
 
 
@@ -535,6 +536,15 @@ findHighestPriced([
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
 
+function findHighestPriced(arr) {
+  let highest = 0;
+  for(let i=0; i<arr.length; i++) {
+    if(arr[i]['price'] > highest) {
+      highest = arr[i]['price']
+      highestPriced = arr[i]
+    }
+  } return highestPriced;
+}
 
 
 
@@ -566,8 +576,12 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
 
-
-
+function mapArray(arr, cb) {
+  let newArr = [];
+  for(let i=0; i<arr.length; i++) {
+    newArr.push(cb(arr[i], i))
+  } return newArr;
+}
 
 
 /*-----------------------------------------------------------------
