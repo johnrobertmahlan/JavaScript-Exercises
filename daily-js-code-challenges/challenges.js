@@ -618,7 +618,14 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
 
-
+function reduceArray(arr, cb, v) {
+  let accumulator = v;
+  let value;
+  for(let i=0; i<arr.length; i++) {
+    value = cb(accumulator, arr[i], i);
+    accumulator = value;
+  } return value;
+}
 
 
 
